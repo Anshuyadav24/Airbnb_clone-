@@ -1,0 +1,197 @@
+<% layout("/layouts/boilerplate") %>
+
+<style>
+
+#filters{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.filter{
+    
+  text-align: center;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  opacity: 0.7;
+}
+
+.filter:hover{
+  opacity: 1;
+  text-shadow: ivory;
+  cursor: pointer;
+}
+.filter i {
+  font-size: 1.5rem;
+   color: #717171; 
+}
+.filter:hover i {
+  color: #000;   
+}
+
+#switch{
+  border: 2px solid rgb(77, 44, 194) ;
+  height: 3.5rem;
+  border-radius: 15px;
+  padding: 1rem;
+  padding-right: 3rem;
+  margin-top: 1.6rem;
+}
+.showText{
+
+    display: none; 
+    color: red;   
+    font-weight: bold; 
+
+}
+
+#fornetcardt{
+  padding: 10px;
+  display: flex;
+}
+.cardover{
+  width: 155px;
+  border-radius: 25px;
+  padding: 0.6rem;
+  
+  border: 1px solid  #000;;
+  background-color: #ebebeb;
+  color: #000;
+  opacity: 0.9;
+  
+}
+</style>
+
+     
+ <div id="filters">
+
+  <div class="filter">
+    <a> <i class="fa-solid fa-fire"></i></a>
+    <p>Trending</p>
+  </div>
+
+   <div class="filter">
+    <a>  <i class="fa-solid fa-mountain"></i></a>
+    <p>Adventure</p>
+  </div>
+
+  <div class="filter">
+    <a><i class="fa-solid fa-hotel"></i></a>
+    <p>Hotels</p>
+  </div>
+   <div class="filter">
+    <a href="#"><i class="fa-solid fa-city"></i></a>
+    <p>City</p>
+  </div>
+
+  <div class="filter">
+    <a href="#"><i class="fa-solid fa-umbrella-beach"></i></a>
+   <p>Resort</p>
+  </div>
+
+  <div class="filter">
+    <a href="#"><i class="fa-solid fa-house"></i></a>
+    <p>Homestay</p>
+  </div>
+
+
+
+  <div class="filter">
+    <a href="#"><i class="fa-solid fa-building-columns"></i></a>
+    <p>Historic</p>
+  </div>
+
+  <div class="filter">
+    <a href="#"><i class="fa-solid fa-utensils"></i></a>
+    <p>Food</p>
+  </div>
+
+  <div class="filter">
+    <a href="#"><i class="fa-solid fa-bell-concierge"></i></a>
+    <p>Luxury</p>
+  </div>
+
+
+  <div class="filter">
+    <a href="#"><i class="fa-solid fa-car"></i></a>
+    <p>RoadTrip</p>
+  </div>
+
+  <div class="filter">
+    <a href="#"><i class="fa-solid fa-plane"></a>
+      </i><p>Flights</p>
+  </div>
+
+  <div class="filter">
+    <a href="#"><i class="fa-solid fa-mug-hot"></a>
+      </i><p>Cafes</p>
+  </div>
+
+  <div class="filter">
+    <a href="#"><i class="fa-solid fa-binoculars"></i></a>
+    <p>ViewPoint</p>
+  </div>
+
+
+  <div class="form-check form-switch form-check-reverse" id="switch">
+  <input class="form-check-input" type="checkbox" id="switchCheckReverse">
+  <label class="form-check-label" for="switchCheckReverse"> Display After taxes</label>
+</div>
+
+</div>
+
+
+    
+    
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mb-4 mt-3">
+
+        <% for (let listing of alllisting) { %>
+
+      <a href="/listings/<%=listing._id %>" class="listing-link">
+
+       <div class="card" class="listing-link">
+       <img src="<%= listing.image.url %>" class="card-img-top" alt="listing-image" style="height: 20rem;">
+       <div class="card-img-overlay">  <p class="cardover"> Guset Favborite</p></div>
+
+
+       <hr>
+        <div class="card-body" style=" margin-left:10px;">
+
+           <b><%= listing.title %></b><br>
+           <li class="price">Location <%= listing.location %> </li>
+           
+
+         <div class="card-text" id="fornetcardt" mt-0>
+          &#8377;<b><%= listing.price ? listing.price.toLocaleString("en-IN") : "Price not available" %>/night</b>  &nbsp; &nbsp; &nbsp;
+                 
+             <p class="showText card-text" style="display:none;"><%=Math.floor( Math.random()*(30-10)+10 )%>%  GST</p>&nbsp; &nbsp; &nbsp;
+             <p class="showText card-text" style="display:none;"><%=Math.floor( Math.random()*(10)+1 )%>% <i>off</i> </p>
+          </div>
+      
+
+    </div>
+        
+   </div>
+            
+    <% } %> 
+    <script src="/js/search.js"></script>
+
+    </div>
+   
+    
+
+<script>
+  const checkbox = document.getElementById("switchCheckReverse");
+  const texts = document.querySelectorAll(".showText");
+
+  checkbox.addEventListener("change", function () {
+    texts.forEach(text => {
+      text.style.display = this.checked ? "block" : "none";
+
+
+     
+    });
+  });
+</script>
+
+

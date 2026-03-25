@@ -1,0 +1,97 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+
+  <div id="uploadSpinner" class="text-center my-3" style="display: none;">
+          <div class="spinner-border" role="status">
+           <span class="visually-hidden">Loading...</span>
+           </div>
+      </div>
+      
+<div class="form-container">
+  <br>
+  <h3 style="color: rgb(231, 71, 71);">Create a New Listing</h3>
+  <form method="post" action="/listings" novalidate class="needs-validation"id="listingForm" enctype="multipart/form-data">
+
+    <div class="mb-3">
+      <label for="title">Title</label>
+      <input placeholder="Enter title" name="listing[title]" type="text" class="form-control" required>
+      <div class="invalid-feedback">
+        Please Enter title.
+      </div>
+        <div class="valid-feedback">
+      title field!
+    </div>
+
+
+    </div>
+
+    <div class="mb-3">
+        <div class="valid-feedback">
+        description field!!
+      </div>
+      <label for="description">Description</label>
+      <textarea placeholder="Enter description" name="listing[description]" class="form-control" required></textarea>
+      <div class="invalid-feedback">
+        Please Enter  description.
+      </div>
+      <div class="valid-feedback">
+             dicription field!
+          </div>
+    </div>
+       <div class="mb-3">
+      <label for="image">Upload Image </label>
+      <input name="listing[image]" type="file" class="form-control"   >
+      
+       
+       </div>
+
+
+    <div class="mb-3">
+      <label for="price">Price</label>
+      <input placeholder="Enter price" name="listing[price]" type="number" class="form-control " required>
+       <div class="invalid-feedback">
+        Please Enter price.
+      </div>
+      <div class="valid-feedback">
+             price field!
+          </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="location">Location</label>
+      <input placeholder="Enter location" name="listing[location]" type="text" class="form-control" required>
+      <div class="invalid-feedback">
+        Please Enter location.
+      </div>
+         <div class="valid-feedback">
+             location field!
+          </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="country">Country</label>
+      <input placeholder="Enter country" name="listing[country]" type="text" class="form-control" required>
+      <div class="invalid-feedback">
+        Please Enter country.
+      </div>
+           <div class="valid-feedback">
+             country field!
+          </div>
+    </div>
+
+    <button class="btn btn-danger"type="submit" style="width: 100px;">Add</button>
+    <br>
+    <br><br><br>
+  </form>
+</div>
+</body>
+
+
+<script>
+  const form = document.getElementById("listingForm");
+  const spinner = document.getElementById("uploadSpinner");
+
+  form.addEventListener("submit", () => {
+    spinner.style.display = "block";
+  });
+</script>

@@ -1,0 +1,32 @@
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">profile</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    
+    <% if (curentuser) { %>
+      
+      <div class="text-center">
+
+        <!-- Profile Image -->
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" 
+             class="rounded-circle mb-3" 
+             width="120">
+
+        <!-- Username -->
+        <h3 class="fw-bold"><%= curentuser.username %></h3>
+
+        <!-- Email -->
+        <p class="text-muted"><%= curentuser.email %></p>
+
+        <!-- Buttons -->
+        <a href="#" class="btn btn-primary w-100 mt-3">Edit Full Profile</a>
+       
+      </div>
+
+    <% } %>
+  </div>
+</div>
